@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form action="" enctype="multipart/form-data" method="POST" class="post-form">
+      {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+    	  <h4>사진: </h4>
+    	  <input type="file" name="images" accept="image/*">
+    	  <br>
+        {% if post.images %}
+    <img src="{{ post.images.url }}" >
+{% endif %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+{% endblock %}
